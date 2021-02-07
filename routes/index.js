@@ -20,15 +20,13 @@ router.get('/', function(req, res, next) {
   .catch(err => console.log('Error: ', err));
 });
 
-router.get('/:state/:selected', function(req, res, next) {
+router.get('/:state', function(req, res, next) {
   const imageUrl = `https://dog.ceo/api/breed/${req.params.state}/images/random`;
-  const optionSelected = `${req.params.selected}`;
-  const selectedArr = optionSelected.split('-');
   axios.get(imageUrl)
   .then(r => r.data.message)
   .then((r, i) => res.render('index', { breedsArr: selectArr,
                                         imageSrc: r,
-                                        option: selectedArr}))
+                                        option: `${req.params.state}`}))
   .catch(err => console.log('Error: ', err));
 });
 
