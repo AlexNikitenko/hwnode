@@ -7,7 +7,11 @@
   <body>
     <select class="breed-list"> Dogs Breeks:
       <% for (let i = 0; i < breedsArr.length; i++) { %>
-        <option class="breed-list-item" value="<%= breedsArr[i] %>" id="<%= breedsArr[i] %>">
+        <option class="breed-list-item" value="<%= breedsArr[i] %>" id="<%= breedsArr[i] %>"
+          <% if (breedsArr[i] === option[1]) { %>
+            <%= option[0] %>
+          <% } %>
+          >
           <%= breedsArr[i] %>
         </option>
       <% } %>
