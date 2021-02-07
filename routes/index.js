@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   .then(r => Object.keys(r))
   .then(r => {
     res.render('index', { breedsArr: r,
-                                   imageSrc: ''});
+                          imageSrc: ''});
     selectArr = [...r];
     })
   .catch(err => console.log('Error: ', err));
@@ -24,7 +24,7 @@ router.get('/:state', function(req, res, next) {
   axios.get(imageUrl)
   .then(r => r.data.message)
   .then((r, i) => res.render('index', { breedsArr: selectArr,
-                                   imageSrc: r }))
+                                        imageSrc: r }))
   .catch(err => console.log('Error: ', err));
 });
 
