@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <main class="main">
+      <% for (let i = 0; i < breedsArr.length; i++) { %>
+        <div class="breed <%= breedsArr[i].breed %>">
+          <%= breedsArr[i].breed %>
+        </div>
+        <img class="breed-img-<%= breedsArr[i].breed %> hide" src="<%= breedsArr[i].breedUrl %>">
+      <% } %>
+    </main>
+    <script src="/javascripts/main.js"></script>
+  </body>
+</html>
