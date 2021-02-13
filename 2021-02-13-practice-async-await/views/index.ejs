@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="main">
+      <b>Actor's Name:</b> <%= name %> <br>
+      <b>Films:</b>
+      <% films.forEach(el => { %>
+        <li>
+          <%= el %>
+        </li>
+      <% }) %>
+    
+    </div>
+  </body>
+</html>

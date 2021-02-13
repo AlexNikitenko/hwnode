@@ -9,10 +9,11 @@
       <% for (let i = 0; i < breedsArr.length; i++) { %>
         <div class="breed <%= breedsArr[i].breed %>">
           <%= breedsArr[i].breed %>
+        
         </div>
-        <img class="breed-img-<%= breedsArr[i].breed %> hide" src="<%= breedsArr[i].breedUrl %>">
       <% } %>
     </main>
     <script src="/javascripts/main.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </body>
 </html>
