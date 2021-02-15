@@ -1,15 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const probe = require('probe-image-size');
 
 const url = 'https://dog.ceo/api/breeds/image/random';
 let dogsArr = [];
 
 for (let i = 0; i < 30; i++) {
-  dogsArr.push(axios.get(url).then(r => {
+  dogsArr.push(axios.get(url).then(async (r) => {
     const obj = {};
     obj.breedUrl = r.data.message;
-    obj.breed = r.data.message.split('/').slice(4).splice(0, 1).join();
+    // obj.breed = r.data.message.split('/').slice(4).splice(0, 1).join();
+    obj.breed = r.data.message.split('/').slice(4).splice(0, 1).join().split('-').splice(0, 1).join();
+    let result = await probe(`${r.data.message}`);
+    obj.width = result.width;
+    obj.height = result.height;
     return obj;
     console.log(obj);
     }));
