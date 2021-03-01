@@ -1,0 +1,30 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.countries {
+  display: flex;
+  flex-direction: column;
+}
+
+.country-card {
+  margin-left: 50px;
+  min-width: 400px;
+  box-sizing: content-box;
+  height: 500px;
+  border: 1px solid black;
+}
+
+.flag {
+  display: block;
+  // box-sizing: border-box;
+  width: 50px;
+  height: auto;
+}
