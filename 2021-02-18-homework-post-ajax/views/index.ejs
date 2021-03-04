@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <form enctype="multipart/form-data">
-      <div class="countries">
-        <input type="radio" id="africa"
-           name="region" value="africa">
+
+<head>
+  <title></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <form enctype="multipart/form-data">
+    <div class="countries">
+      <div class="wrapper">
+        <input type="radio" id="africa" name="region" value="africa">
         <label for="africa">Africa</label>
-    
-        <input type="radio" id="americas"
-         name="region" value="americas">
-        <label for="contactChoice2">Americas</label>
-    
-        <input type="radio" id="asia"
-          name="region" value="asia">
-        <label for="contactChoice3">Asia</label>
-
-        <input type="radio" id="oceania"
-         name="region" value="oceania">
-        <label for="oceania">Oceania</label>
-
-        <input type="radio" id="europe"
-          name="region" value="europe">
-        <label for="contactChoice3">Europe</label>
-        
       </div>
-    </form>
-    <div class="country-card"></div>
-    <div class="answ"></div>
+      <div class="wrapper">
+        <input type="radio" id="americas" name="region" value="americas">
+        <label for="contactChoice2">Americas</label>
+      </div>
+      <div class="wrapper">
+        <input type="radio" id="asia" name="region" value="asia">
+        <label for="contactChoice3">Asia</label>
+      </div>
+      <div class="wrapper">
+        <input type="radio" id="oceania" name="region" value="oceania">
+        <label for="oceania">Oceania</label>
+      </div>
+      <div class="wrapper">
+        <input type="radio" id="europe" name="region" value="europe">
+        <label for="contactChoice3">Europe</label>
+      </div>
+    </div>
+  </form>
+  <div class="country-card"></div>
+  <div class="answ"></div>
 
 
-    <script src="/javascripts/main.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  </body>
+  <script src="/javascripts/main.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
 </html>

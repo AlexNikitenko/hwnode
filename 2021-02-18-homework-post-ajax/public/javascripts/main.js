@@ -9,12 +9,20 @@ form.addEventListener('change', ev => {
     .then(r => {
       console.log(r.data);
       let str = '';
-       r.data.forEach(el => {
+      r.data.forEach(el => {
+        let str2 = '';
+
+        el.catsArr.forEach(elem => str2 = `${str2}
+        <div class="cat">${elem.name}
+          <img src="${elem.imgUrl}">
+        </div>
+        `)
+
         str = `${str}
-        <div class="${el.name}">
-        ${el.name}
+        <div class="country">
+        <div class="country-name">${el.name}</div>
           <img class="flag" src="${el.flag}">
-          <div class="cats">${el.cats}
+          <div class="cats">${str2}
           </div>
         </div>
         `;
@@ -22,7 +30,7 @@ form.addEventListener('change', ev => {
       countryEl.innerHTML = str;
 
     })
-    
+
     // countryEl.innerHTML = `${r.data}`)
     .catch(e => answEl.innerHTML = `Error: ${e}`);
 });

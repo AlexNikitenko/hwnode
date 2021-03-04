@@ -18,13 +18,45 @@ a {
   margin-left: 50px;
   min-width: 400px;
   box-sizing: content-box;
-  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   border: 1px solid black;
+}
+
+.country {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  box-sizing: border-box;
+}
+
+.country-name {
+  margin: 0 auto;
 }
 
 .flag {
   display: block;
-  // box-sizing: border-box;
-  width: 50px;
-  height: auto;
+  width: 100px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.cats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 600px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.cat {
+  display: flex;
+  flex-direction: column;
+}
+
+.cat img {
+  width: auto;
+  height: 100px;
 }
