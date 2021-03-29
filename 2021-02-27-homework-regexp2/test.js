@@ -9,22 +9,34 @@ const freemem = (id) => {
 console.time('time');
 freemem(1);
 
-let str = '';
+// const streamWrite = fs.createWriteStream('1.txt');
 
-  for (let i = 0; i < 1e8; i++) {
-    str = `${str}0`;
-  }
-  const readableStream = fs.createReadStream(str);
- 
-  const writeableStream = fs.createWriteStream("1.txt");
-  readableStream.pipe(writeableStream);
+// let chunk = '';
+// for (let j = 0; j < 1e3; j++) {
+//   for (let i = 0; i < 1e7; i++) {
+//     chunk = `${chunk}0`;
+//     }
+//     streamWrite.write(chunk);
+  
+    
+//   //   if (i % 1e7 === 0) {
+//   //     fs.appendFileSync('1.txt', chunk, () => {});
+//   //     chunk = '';
+//   //   }
+//   }
+// streamWrite.end();
+const chunkSize = 6400000;
+let buf1 = Buffer.alloc(chunkSize, '0');
+
+for (let j = 0; j < (1e10 / chunkSize); j++) {
+  // const streamRead = fs.createReadStream('2.txt');
+  // const streamWrite = fs.createWriteStream('1.txt');
+  fs.appendFileSync('1.txt', buf1, () => {});
+  // fs.appendFile('1.txt', buf1, () => {});
+}
 
 
-// for (let i = 0; i < 1e8; i++) {
-//     str = `${str}0`;
-// }
-// fs.WriteStream('1.txt', str, () => {});
-// fs.writeFile('1.txt', str, () => {});
+console.log('DATA COMP>>>', os.uptime())
 
 fs.stat('1.txt', (err, stats) => console.log(stats));
 
