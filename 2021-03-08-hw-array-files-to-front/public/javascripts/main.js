@@ -19,7 +19,7 @@ form.addEventListener("submit", (event) => {
       r.data.outgoingArr.forEach(el => {
         str = `${str}<div>${el.name}/${el.size}/${el.time}</div>`;
       })
-      downloadEl.innerHTML = `<a href="${r.data.downloadLink}">Download Zip Archive</a>`;
+      downloadEl.innerHTML = '<a href="/files.zip" download>Download Zip Archive</a>';
       return str;
     })
     .then(r => {

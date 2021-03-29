@@ -74,23 +74,20 @@ router.post('/review', upload.array('files'), (req, res) => {
     
     filteredArr.forEach(el => {
       console.log('Files to Zip:', `../uploads/${el.name}`);
-      // zip.addLocalFile(path.join(__dirname, `../uploads/${el.name}`));
       zip.addLocalFile(path.join(__dirname, `../uploads/${el.name}`));
       zip.writeZip(path.join(__dirname, "../files.zip"));
     })
 
-    
-
-    res.send({ outgoingArr: filteredArr, downloadLink: "../files.zip" } );
+    res.send(filteredArr);
   };
 
   getListFiles(path.join(__dirname, '../uploads'));
   console.log('Body>>>', dateFrom, dateTo);
 
-  // resultFile.add("Hello.txt");
+});
 
-
-
+router.get('/files.zip', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../files.zip'));
 });
 
 
