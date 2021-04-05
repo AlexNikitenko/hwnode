@@ -6,10 +6,12 @@ formEl.addEventListener('submit', (ev) => {
   ev.preventDefault();
 
   const data = new FormData(formEl);
-  axios.post('/', data)
-    // .then(r => answEl.innerHTML = `Ok: ${r.data}`)
-    .then(r => answEl.innerHTML = carsArr.reduce((acc, rec) => {
-      return `${str}<li>${rec.make} ${rec.model} ${rec.year}</li><br>`;
-    }, ''))
+  axios.post('/years', data)
+    .then(r => {
+      const str = r.data.reduce((str, el) => {
+        return `${str}<li>${el.make} ${el.model}</li><br>`;
+      }, '');
+      answEl.innerHTML = str;
+    })
     .catch(err => answEl.innerHTML = `Error: ${err}`)
 });

@@ -7,5 +7,7 @@ const upload = multer();
 /* GET home page. */
 router.get('/', controllers.getIndexPage);
 router.post('/years', upload.none(), controllers.getFormYears);
+router.post('/insert', upload.none(), controllers.insertCar);
+router.post('/delete', upload.none(), controllers.deleteCar);
 
 module.exports = router;
