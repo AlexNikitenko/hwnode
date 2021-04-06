@@ -10,4 +10,6 @@ router.get('/', controllers.showIndex);
 
 router.post('/addArticle', upload.none(), controllers.addNewArticle);
 
+router.get('/article', controllers.showArticleById);
+
 module.exports = router;

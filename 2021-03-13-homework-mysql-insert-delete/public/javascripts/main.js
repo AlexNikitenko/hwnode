@@ -6,7 +6,7 @@ const btnSubmit = document.querySelector('.btn-submit');
 
 const thenData = (r) => {
   const str = r.data.reduce((str, el) => {
-    return `${str}<li>${el.make} ${el.model} ${el.year}</li><br>`;
+    return `${str}<li>${el.id} ${el.make} ${el.model} ${el.year}</li><br>`;
   }, '');
   answEl.innerHTML = str;
 }

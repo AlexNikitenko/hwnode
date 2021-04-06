@@ -38,7 +38,7 @@ router.post('/', upload.array('files'), (req, res) => {
   newArr.forEach(async (el) => {
     let str = '\n';
     str = `${str}${el}`;
-    return await fs.appendFile('main.log', str, (err) => console.log(err));
+    await fs.appendFile('main.log', str, (err) => console.log(err));
   });
   fs.appendFile('main.log', `\n`, (err) => console.log(err));
 

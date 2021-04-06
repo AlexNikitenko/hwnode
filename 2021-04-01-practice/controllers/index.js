@@ -6,37 +6,55 @@ const showIndex = (req, res) => {
 };
 
 const addNewArticle = (req, res) => {
-  
+
   const strTags = req.body.tags;
   const tagsArr = strTags.split(',').map(el => el.trim());
   req.body.tags = tagsArr;
 
   const newArticle = new Article(req.body);
-    newArticle.save(function (err, data) {
+
+  newArticle.save(function (err, data) {
     console.log('DB data >>>', data);
-    if (err) throw err;
-    res.sendStatus(200);
+    if (err) {
+      res.send(`not correct data`);
+      console.log('>>>>', err);
+    } else {
+      res.send(data._id);
+    }
   });
+
 };
 
-// const addNewArticle = (req, res) => {
-//   const newArticle = new Article({
-//     title: 'Troubleshooting',
-//     article: `The kerberos package is a C++ extension that requires a build environment to be installed on your system. 
-//     You must be able to build Node.js itself in order to compile and install the kerberos module. Furthermore, the kerberos
-//     module requires the MIT Kerberos package to correctly compile on UNIX operating systems. Consult your UNIX operation 
-//     system package manager for what libraries to install.`,
-//     tags: ['nodeJS', 'mongoDB', 'mongoose'], 
-//     date: 04-01-2021,
-//   });
-
-//   newArticle.save(function (err, data) {
-//     if (err) throw err;
-//     res.sendStatus(200);
-//   });
-// };
+const showArticleById = async (req, res) => {
+  const {
+    id
+  } = req.query;
+  if (id.match(/^[0-9a-fA-F]{24}$/)) {
+    res.json({
+      message: 'missing id in DB'
+    });
+  } else {
+    try {
+      const article = await Article.findById(id);
+      console.log('article>>>', article);
+      if (!article) {
+        res.json({
+          message: "article not found"
+        });
+      } else {
+        res.json(article);
+      }
+    } catch (err) {
+      res.json({
+        message: `id ${err.value} not found`
+      });
+      console.log('ERROR>>>', err);
+    }
+  };
+};
 
 module.exports = {
   addNewArticle,
+  showArticleById,
   showIndex,
 };
