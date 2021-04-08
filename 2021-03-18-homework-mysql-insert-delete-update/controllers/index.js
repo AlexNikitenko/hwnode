@@ -21,7 +21,7 @@ const getFormYears = async (req, res) => {
   } = req.body;
   const filteredCars = await Cars.getCarsByYear(from, to);
   console.log('FILTERED ARR>>>>>>>>>', filteredCars);
-  res.send(filteredCars);;
+  res.send(filteredCars);
 }
 
 const insertCar = async (req, res) => {
@@ -32,7 +32,7 @@ const insertCar = async (req, res) => {
   } = req.body;
   await Cars.insertRow(make, model, year);
   const result = await Cars.getAllCars();
-  res.send(result);;
+  res.send(result);
 }
 
 const deleteCar = async (req, res) => {
@@ -53,7 +53,7 @@ const updateCar = async (req, res) => {
   } = req.body;
   await Cars.updateRow(make, model, year, id);
   const result = await Cars.getAllCars();
-  res.send(result);;
+  res.send(result);
 }
 
 module.exports = {

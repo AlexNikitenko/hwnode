@@ -1,0 +1,29 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.add-article {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 400px;
+  box-sizing: border-box;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  width: 400px;
+  margin: 0 auto;;
+}
+
+.red-border {
+  border: 3px solid red;
+}
