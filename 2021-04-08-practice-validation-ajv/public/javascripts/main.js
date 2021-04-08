@@ -20,5 +20,5 @@ formEl.addEventListener('submit', (event) => {
         }
       })
     })
-    .catch(err => answEl.innerHTML = `ERROR: ${err}`);
+    .catch(err => console.log('ERROR: ', err);
 });
