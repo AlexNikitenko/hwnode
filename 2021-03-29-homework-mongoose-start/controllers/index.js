@@ -1,19 +1,19 @@
-const Article = require('../model/Articles/');
+const Users = require('../model/Users');
 
 
 const showIndex = (req, res) => {
   res.render('index');
 };
 
-const addNewArticle = (req, res) => {
+const addNewUser = (req, res) => {
 
-  const strTags = req.body.tags;
-  const tagsArr = strTags.split(',').map(el => el.trim());
-  req.body.tags = tagsArr;
+  // const strTags = req.body.tags;
+  // const tagsArr = strTags.split(',').map(el => el.trim());
+  // req.body.tags = tagsArr;
 
-  const newArticle = new Article(req.body);
+  const newUser = new Users(req.body);
 
-  newArticle.save(function (err, data) {
+  newUser.save(function (err, data) {
     console.log('DB data >>>', data);
     if (err) {
       res.send(`not correct data`);
@@ -25,7 +25,7 @@ const addNewArticle = (req, res) => {
 
 };
 
-const showArticleById = async (req, res) => {
+const showUserById = async (req, res) => {
   const {
     id
   } = req.query;
@@ -35,14 +35,14 @@ const showArticleById = async (req, res) => {
     });
   } else {
     try {
-      const article = await Article.findById(id);
-      console.log('article>>>', article);
-      if (!article) {
+      const user = await Users.findById(id);
+      console.log('user>>>', user);
+      if (!user) {
         res.json({
-          message: "article not found"
+          message: "user not found"
         });
       } else {
-        res.json(article);
+        res.json(user);
       }
     } catch (err) {
       res.json({
@@ -63,7 +63,7 @@ const getUserByName = async (searchName) => {
 };
 
 module.exports = {
-  addNewArticle,
-  showArticleById,
+  addNewUser,
+  showUserById,
   showIndex,
 };
