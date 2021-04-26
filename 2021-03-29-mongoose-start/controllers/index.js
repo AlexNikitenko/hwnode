@@ -1,27 +1,25 @@
 const Users = require('../model/Users');
 
-
 const showIndex = (req, res) => {
   res.render('index');
 };
 
 const addNewUser = (req, res) => {
 
-  // const strTags = req.body.tags;
-  // const tagsArr = strTags.split(',').map(el => el.trim());
-  // req.body.tags = tagsArr;
-
-  const newUser = new Users(req.body);
+  const newUser = new Users({
+    name: 'Иван',
+    exp: 30,
+    role: 'welder',
+    salary: 20000,
+    stage: 1,
+    transportation: false,
+  });
 
   newUser.save(function (err, data) {
     console.log('DB data >>>', data);
-    if (err) {
-      res.send(`not correct data`);
-      console.log('>>>>', err);
-    } else {
-      res.send(data._id);
-    }
-  });
+    if (err) throw err;
+    res.sendStatus(200);
+});
 
 };
 
@@ -51,15 +49,6 @@ const showUserById = async (req, res) => {
       console.log('ERROR>>>', err);
     }
   };
-};
-
-const getUserByName = async (searchName) => {
-  const user = await Article.findOne( { name: `${searchName}` });
-  if (!user) {
-    res.json({ message: "user not found"});
-  } else {
-    res.json(user);
-  }
 };
 
 module.exports = {

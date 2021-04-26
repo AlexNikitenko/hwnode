@@ -1,0 +1,54 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+li {
+  margin-bottom: 20px;
+  list-style: none;
+}
+
+.user-row {
+  position: relative;
+  height: 36px;
+}
+
+.user-row a {
+  font-size: 22px;
+}
+
+.btn-delete {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  top: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.btn-delete::before {
+  transform: rotate(45deg);
+}
+
+.btn-delete::before,
+.btn-delete::after {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 3px;
+  background-color: #ee3643;
+}
+
+.btn-delete::after {
+  transform: rotate(-45deg);
+}
+
+.btn-delete:active,
+.btn-delete:focus {
+  outline: none;
+}

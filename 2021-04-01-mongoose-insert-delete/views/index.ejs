@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='icon' href='data:;base64,=' />
+</head>
+
+<body>
+
+  <form id="form1">
+    <input type="text" name="name" placeholder="name" class="input-name">
+    <input type="date" name="birth" class="input-birth">
+    <input type="text" name="exp" placeholder="exp" class="input-exp">
+    <select name="role" class="input-role">
+      <option value="worker">worker</option>
+      <option value="welder">welder</option>
+    </select>
+    <input type="text" name="salary" placeholder="salary" class="input-salary">
+    <button type="submit">Add User</button>
+  </form>
+  <h1>Out</h1>
+  <div class="output"></div>
+  <h1>All Users:</h1>
+  <div class="all-users">
+
+    <% usersArr.forEach(el => { %>
+    <li>
+      <div class="user-row">
+        <a href="#" id="update-<%=el.id %>" class="link-update"><%=el.name %>
+        </a><button type="button" class="btn-delete" id="<%=el.id %>"></button>
+      </div><br>
+      <div id="info-<%=el.id %>">
+        <%= `birthday - ${el.birth} / experience - ${el.exp} / role - ${el.role} / salary - ${el.salary}`; %>
+      </div>
+    </li>
+    <%  }) %>
+
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <script src="/javascripts/main.js"></script>
+</body>
+
+</html>
