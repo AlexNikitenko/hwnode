@@ -1,13 +1,14 @@
-const formEl = document.querySelector('.add-article');
+const formEl = document.querySelector('.main-form');
 const answEl = document.querySelector('.output');
+const btnSubmit = document.querySelector('.btn-submit');
 
 formEl.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = new FormData(formEl);
-  axios.post('/addArticle', data)
+  axios.post('/sendData', data)
     .then(r => {
-      answEl.innerHTML = `<a href="/article?id=${r.data}">article added.</a>`;
-      formEl.reset();
+      console.log('DATA>>>', r);
+      answEl.innerHTML = `Ok: ${r.data}`;
     })
     .catch(err => answEl.innerHTML = `ERROR: ${err}`);
 });

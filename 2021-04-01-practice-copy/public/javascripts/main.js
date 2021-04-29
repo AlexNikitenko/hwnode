@@ -7,7 +7,6 @@ formEl.addEventListener('submit', (event) => {
   axios.post('/addArticle', data)
     .then(r => {
       answEl.innerHTML = `<a href="/article?id=${r.data}">article added.</a>`;
-      formEl.reset();
     })
     .catch(err => answEl.innerHTML = `ERROR: ${err}`);
 });
