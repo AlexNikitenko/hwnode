@@ -8,6 +8,8 @@ const upload = multer();
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 
+
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index');

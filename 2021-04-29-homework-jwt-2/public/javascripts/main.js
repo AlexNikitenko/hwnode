@@ -7,8 +7,8 @@ formEl.addEventListener('submit', (event) => {
   const data = new FormData(formEl);
   axios.post('/sendData', data)
     .then(r => {
-      console.log('DATA>>>', r.data);
-      answEl.innerHTML = `Result: ${r.data.message}`;
+      console.log('DATA>>>', r);
+      answEl.innerHTML = `Ok: ${r.data.message}`;
     })
     .catch(err => answEl.innerHTML = `ERROR: ${err}`);
 });
