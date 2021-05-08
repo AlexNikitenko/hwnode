@@ -19,7 +19,9 @@ router.get('/', function (req, res, next) {
 
 router.post('/', upload.single('filename'), async (req, res) => {
   const file = req.file;
-  const writeStream = fs.createWriteStream('uploads/1.zip');
+  console.log('>>>', file.originalName);
+
+  const writeStream = fs.createWriteStream(`uploads/${file.originalName}`);
 
   await file.stream.pipe(writeStream);
 
