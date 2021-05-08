@@ -9,8 +9,6 @@ const wsServer = (srv) => {
     console.log(`Client with id ${socket.id} connected`);
     clients.push(socket.id);
 
-    let i = 0;
-
     socket.on('message', message => console.log('Message', message));
     socket.emit('message', "I'm server");
 

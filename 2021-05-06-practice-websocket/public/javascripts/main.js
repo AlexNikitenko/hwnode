@@ -11,7 +11,7 @@ formEl.addEventListener('submit', (event) => {
       let socket = io();
       socket.on('message', message => console.log('Message from server', message));
       socket.on('private message', message => console.log('Privat message from server', message));
-      
+
       let i = 0;
 
       const timerID = setInterval(() => {
@@ -19,7 +19,6 @@ formEl.addEventListener('submit', (event) => {
         socket.emit('message', `${r.data.message} ${i}`);
         answEl.innerHTML = `Ok: ${r.data.message} ${i}`;
       }, 1000);
-      
     })
     .catch(err => answEl.innerHTML = `ERROR: ${err}`);
 });
