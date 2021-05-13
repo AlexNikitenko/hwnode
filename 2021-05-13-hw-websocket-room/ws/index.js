@@ -21,7 +21,7 @@ const wsServer = (srv) => {
     const valuesArr = [];
     socket.on('scrollValue', scrollValue => {
       valuesArr.push(scrollValue);
-      socket.broadcast.to('room1').emit('scrollValue', valuesArr);
+      socket.broadcast.to('room1').emit('scrollValueArr', valuesArr);
       console.log('scrollValue:', socket.id, ':', scrollValue);
     });
 

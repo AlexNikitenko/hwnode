@@ -7,7 +7,7 @@ socket.on('clientsId', index => {
   if (index === 0) {
     formEl.innerHTML = `<div class="output"></div>`;
     const outputEl = document.querySelector('.output');
-    socket.on('scrollValue', valuesArr => {
+    socket.on('scrollValueArr', valuesArr => {
       let str = '';
       valuesArr.forEach(el => str = `${str}<div>${el}</div><br>`);
       outputEl.innerHTML = str;
