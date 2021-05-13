@@ -5,6 +5,8 @@ const wsServer = (srv) => {
 
   let clients = [];
 
+  const valuesArr = [];
+
   io.on('connection', socket => {
 
     socket.join('room1');
@@ -18,7 +20,6 @@ const wsServer = (srv) => {
     socket.emit('message', "I'm server");
     socket.emit('clientsId', clients.indexOf(socket.id));
 
-    const valuesArr = [];
     socket.on('scrollValue', scrollValue => {
       valuesArr.push(scrollValue);
       socket.broadcast.to('room1').emit('scrollValueArr', valuesArr);
