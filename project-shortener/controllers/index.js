@@ -1,5 +1,7 @@
 const Urls = require('../model/Urls');
 
+const crypto = require('crypto');
+
 const showIndex = (req, res) => {
   res.render('index');
 };
@@ -15,14 +17,27 @@ const addNewUrl = async (req, res) => {
       console.log('ERR>>>>', err);
     } else {
       tempId = data._id;
-      console.log('DATA>>>', data);
+      data.shortUrl = `http://127.0.0.1:3000/${generateShortUrl()}`;
+      res.send({ newUrl: data.shortUrl });
     }
   });
-  const result = await Urls.find({});
-
-  // res.send({ newUsrlId: tempId, urlsArr: result })
-  res.sendStatus(200);
+  // console.log('NEW>>>', req.bodydata);
+  // res.send({ newUrl: data.shortUrl })
+  // res.sendStatus(200);
   
+};
+
+const generateShortUrl = (length = 6) => {
+  const uppercase = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+  const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+  const numbers = '23456789';
+  const all = uppercase + lowercase + numbers;
+  let newLink = '';
+  for (let i = 0; i < length; i++) {
+    const randomNumber = crypto.randomInt(all.length);
+    newLink += all.charAt(randomNumber);
+  };
+  return newLink;
 };
 
 module.exports = {

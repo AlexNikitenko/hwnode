@@ -8,6 +8,9 @@ formEl.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = new FormData(formEl);
   axios.post('/addUrl', data)
-    .then(r => console.log('RRR>>>', r.data))
+    .then(r => {
+      outputUrl.value = r.data.newUrl;
+      console.log('>>>', r.data);
+    })
     .catch(err => console.log(err));
 });
