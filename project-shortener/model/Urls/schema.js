@@ -11,7 +11,7 @@ module.exports = new Schema({
   shortUrl: {
     type: String,
     maxlength: 500,
-  // },
+  },
   // email: {
   //   type: String,
   //   maxlength: 250,
