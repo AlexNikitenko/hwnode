@@ -11,4 +11,6 @@ router.get('/', controllers.showIndex);
 
 router.post('/addUrl', upload.none(), controllers.addNewUrl);
 
+router.get('/:newUrl', controllers.getRedirect);
+
 module.exports = router;

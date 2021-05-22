@@ -9,6 +9,10 @@ const showIndex = (req, res) => {
 const addNewUrl = async (req, res) => {
   const newUrl = new Urls(req.body);
   let tempId = '';
+
+  const randomUrl = generateShortUrl();
+  newUrl.shortUrl = `http://127.0.0.1:3000/${randomUrl}`;
+
   console.log('REQ-Body>>>', req.body);
   newUrl.save(function (err, data) {
     console.log('DB data >>>', data);
@@ -17,8 +21,7 @@ const addNewUrl = async (req, res) => {
       console.log('ERR>>>>', err);
     } else {
       tempId = data._id;
-      data.shortUrl = `http://127.0.0.1:3000/${generateShortUrl()}`;
-      res.send({ newUrl: data.shortUrl });
+      res.send({ urlId: tempId, oldUrl: data.longUrl, newUrl: data.shortUrl });
     }
   });
   
@@ -37,7 +40,16 @@ const generateShortUrl = (length = 6) => {
   return newLink;
 };
 
+const getRedirect = async (req, res) => {
+  const { newUrl } = req.params;
+  const { longUrl } = await Urls.findOne({ shortUrl: `http://127.0.0.1:3000/${newUrl}` });
+  console.log('New2>>>', newUrl);
+  console.log('RB2>>>', longUrl);
+  res.redirect(longUrl);
+};
+
 module.exports = {
   addNewUrl,
   showIndex,
+  getRedirect,
 };

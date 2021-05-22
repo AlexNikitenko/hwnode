@@ -10,7 +10,6 @@ formEl.addEventListener('submit', (event) => {
   axios.post('/addUrl', data)
     .then(r => {
       outputUrl.value = r.data.newUrl;
-      console.log('>>>', r.data);
     })
     .catch(err => console.log(err));
 });
