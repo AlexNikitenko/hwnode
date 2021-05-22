@@ -21,9 +21,6 @@ const addNewUrl = async (req, res) => {
       res.send({ newUrl: data.shortUrl });
     }
   });
-  // console.log('NEW>>>', req.bodydata);
-  // res.send({ newUrl: data.shortUrl })
-  // res.sendStatus(200);
   
 };
 
